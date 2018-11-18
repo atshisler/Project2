@@ -2,13 +2,25 @@ package com.revature.model;
 
 import java.util.Date;
 
+import javax.persistence.*;
 public class Game {
+
+@Id
+@Column(name = "Game_ID")
+@SequenceGenerator(name="gameSequence", allocationSize=1, sequenceName="SQ_GAME_PK")
+@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gameSequence")
 private int id;
+@Column(name = "TITLE")
 private String title;
+@Column(name = "GENRE")
 private String genre;
+@Column(name = "REVIEW")
 private String review;
+@Column(name = "COMPANY")
 private String company;
+@Column(name = "PLATFORM")
 private String platform;
+@Column(name = "RELEASEDATE")
 private Date releaseDate;
 
 	public Game() {
