@@ -1,5 +1,20 @@
+div
+{
+    background-color: #1c1c1c;
+}
+
 h1
 {
-    text-align: center;
-    color: #408000;
+    color: #009933;
+}
+
+nav
+{
+    background-color: #3f3e3e;
+    font-size: 25px
+}
+
+a
+{
+    color: #00994d;
 }
