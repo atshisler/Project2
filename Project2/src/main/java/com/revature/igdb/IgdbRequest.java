@@ -17,31 +17,35 @@ import wrapper.Parameters;
 import wrapper.Version;
 
 public class IgdbRequest {
-	private String key = "c7b9a8a0deb857507ca18673690dd26b";
+	//private String key = "c7b9a8a0deb857507ca18673690dd26b";
+	private String key = "b7f579b4334207852addd702fe0e3442";
 	private IGDBWrapper wrapper = new IGDBWrapper(key, Version.STANDARD, true);
 	private JSONArray gameInfo;
-
-	public Game getGameByTitle(String title) {
+	private List<Game> gameList;
+	boolean success = false;
+	public List<Game> getGameByTitle(String title) {
 		gameInfo = null;
-		Parameters params = new Parameters().addSearch(title).addFields("name,first_release_date")
-				.addExpand("genres,developers,platforms").addLimit("5");
+		Parameters params = new Parameters().addSearch(title).addFields("name,first_release_date");
+				//.addExpand("genres,developers,platforms").addLimit("5");
 
 		wrapper.games(params, new OnSuccessCallback() {
 			public void onSuccess(JSONArray result) {
 				// JSONArray containing 2 titles
 				System.out.println("Success!");
 				gameInfo = result;
-				for (int i = 0; i < result.length(); i++)
-					System.out.println(result.get(i).toString());
-				createGame(gameInfo);
+				//for (int i = 0; i < result.length(); i++)
+				//	System.out.println(result.get(i).toString());
+				success = true;
+				gameList = createGame(gameInfo);
+				
 			}
 
 			public void onError(Exception error) {
 				System.out.println("Error");// Do something on error
 			}
 		});
-
-		return null;
+		
+		return gameList;
 	}
 
 	public List<Game> getGamesByName() {
@@ -68,7 +72,7 @@ public class IgdbRequest {
 	}
 
 //-----------------------Helper Methods-------------------------//
-	private void createGame(JSONArray result) {
+	private List<Game> createGame(JSONArray result) {
 		List<Game> newGames = new ArrayList<Game>();
 		for (int i = 0; i < result.length(); i++) {
 			Game newGame = new Game();
@@ -82,11 +86,14 @@ public class IgdbRequest {
 				newGame.setReleaseDate(date);
 			}
 			newGames.add(newGame);
-			System.out.println(newGame.toString());
+			//System.out.println(newGames.size() + " Size end " + newGames.toString());
 
 		} // result array
-		for(int x = 0; x < newGames.size(); x++)
-			System.out.println(newGames.get(x));
+		//for(int x = 0; x < newGames.size(); x++)
+		//	System.out.println(newGames.get(x));
+
+		return newGames;
+			
 	}// createGame
 
 	//returns name value of a given key

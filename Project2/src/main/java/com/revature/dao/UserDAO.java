@@ -8,6 +8,8 @@ public interface UserDAO {
 	int createUser(GameUser user);
 	void updateUser(GameUser user);
 	GameUser getUser(String name);
+	GameUser getUserbyId(int id);
+	void deleteUser(int id);
 	List<GameUser> getAllUsers();
 	
 }

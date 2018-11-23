@@ -47,5 +47,27 @@ public class UserDAOImpl implements UserDAO{
 		s.close();
 		return users;
 	}
+	@Override
+	public GameUser getUserbyId(int id) {
+		// TODO Auto-generated method stub
+		Session s = HibernateUtil.getSession();
+		String sql = "SELECT * FROM GAMEUSER WHERE USER_ID = ?";
+		Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
+		q.setParameter(1, id);
+		GameUser user = q.getSingleResult();
+		return user;
+	}
+	@Override
+	public void deleteUser(int id) {
+		// TODO Auto-generated method stub
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		GameUser user = s.get(GameUser.class, id);
+		if(user != null) {
+			s.delete(user);
+		}
+		tx.commit();
+		s.close();
+	}
 
 }
