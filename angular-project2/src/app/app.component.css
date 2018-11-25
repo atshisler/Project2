@@ -18,3 +18,8 @@ a
 {
     color: #00994d;
 }
+
+a:hover
+{
+    color: white;
+}

@@ -6,13 +6,15 @@ import { PlatformComponent } from './platform/platform.component';
 import { GenreComponent } from './genre/genre.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRouingModule } from './app-rouing.module';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlatformComponent,
     GenreComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
