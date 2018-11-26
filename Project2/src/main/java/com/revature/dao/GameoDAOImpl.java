@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 
@@ -15,11 +16,20 @@ public class GameoDAOImpl implements GameDAO {
 	public Game getGameByName(String name) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM GAMEUSER WHERE TITLE = ?";
+		String sql = "SELECT * FROM GAME WHERE TITLE = ?";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, name);
 		Game game = q.getSingleResult();
 		return game;
+	}
+	
+	public List<Game> searchGameByName(String name){
+		Session s = HibernateUtil.getSession();
+		String sql = "SELECT * FROM GAME WHERE TITLE = ?";
+		Query<Game> q = s.createNativeQuery(sql, Game.class);
+		q.setParameter(1, "%" + name + "%");
+		List<Game> games = q.list();
+		return games;
 	}
 
 	public List<Game> getGamesByCompany(String company) {
@@ -55,6 +65,17 @@ public class GameoDAOImpl implements GameDAO {
 		q.setParameter(1, genre);
 		List<Game> games = q.list();
 		return games;
+	}
+
+	@Override
+	public int addGame(Game game) {
+		// TODO Auto-generated method stub
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		int gamePk = (Integer) s.save(game);
+		tx.commit();
+		s.close();
+		return gamePk;
 	}
 
 

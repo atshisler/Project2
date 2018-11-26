@@ -3,6 +3,7 @@ package com.revature.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -60,15 +61,17 @@ public class TestUserDAO {
 
 
 	//*************************************Initialization******************************************************//
-		@Before
+		@After
 		public void deleteUser() {
 			GameUser user = uDAO.getUser("CreateMe");
-			uDAO.deleteUser(user.getId());
+			System.out.println(user);
+			if(user != null)
+				uDAO.deleteUser(user.getId());
 
 
 		}
 		
-		@Before
+		@After
 		public void resetPassword() {
 			GameUser ogResult = uDAO.getUser("Testman");
 			ogResult.setPassword("password");
