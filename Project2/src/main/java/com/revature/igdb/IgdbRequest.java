@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.revature.dao.GameDAO;
-import com.revature.dao.GameoDAOImpl;
+import com.revature.dao.GameDAOImpl;
 import com.revature.dao.GenreDAO;
 import com.revature.dao.GenreDAOImpl;
 import com.revature.dao.PlatformDAO;
@@ -33,8 +33,7 @@ public class IgdbRequest {
 	private IGDBWrapper wrapper = new IGDBWrapper(key, Version.STANDARD, true);
 	private JSONArray gameInfo;
 	boolean success = false;
-	private ExecutorService executor = Executors.newSingleThreadExecutor();
-	private GameDAO gDAO = new GameoDAOImpl();
+	private GameDAO gDAO = new GameDAOImpl();
 	private PlatformDAO pDAO = new PlatformDAOImpl();
 	private GenreDAO gnDAO = new GenreDAOImpl();
 

@@ -38,7 +38,7 @@ public class Game {
 			joinColumns = { @JoinColumn(name = "GAME_ID") },
 			inverseJoinColumns = {@JoinColumn(name = "GENRE_ID")}
 			)
-	private Set<Genre> genres = new HashSet<Genre>();
+	private Set<Genre> genres = new HashSet<>();
 
 //@Transient
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -48,7 +48,7 @@ public class Game {
 			joinColumns = { @JoinColumn(name = "GAME_ID") },
 			inverseJoinColumns = {@JoinColumn(name = "PLATFORM_ID")}
 			)
-	private Set<Platform> platforms = new HashSet<Platform>();
+	private Set<Platform> platforms = new HashSet<>();
 
 	public Game() {
 		// TODO Auto-generated constructor stub

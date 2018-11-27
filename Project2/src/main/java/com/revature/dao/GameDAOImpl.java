@@ -11,7 +11,7 @@ import com.revature.model.Game;
 
 import com.revature.util.HibernateUtil;
 
-public class GameoDAOImpl implements GameDAO {
+public class GameDAOImpl implements GameDAO {
 
 	public Game getGameByName(String name) {
 		// TODO Auto-generated method stub
@@ -25,11 +25,11 @@ public class GameoDAOImpl implements GameDAO {
 	
 	public List<Game> searchGameByName(String name){
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM GAME WHERE TITLE = ?";
+		String sql = "SELECT * FROM GAME WHERE UPPER(TITLE) LIKE UPPER(?)";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, "%" + name + "%");
-		List<Game> games = q.list();
-		return games;
+		return q.list();
+		
 	}
 
 	public List<Game> getGamesByCompany(String company) {
@@ -38,8 +38,7 @@ public class GameoDAOImpl implements GameDAO {
 		String sql = "SELECT * FROM GAME WHERE COMPANY = ?";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, company);
-		List<Game> games = q.list();
-		return games;
+		return q.list();
 	}
 
 	public List<Game> getGamesByPlatform(String platform) {
@@ -48,8 +47,8 @@ public class GameoDAOImpl implements GameDAO {
 		String sql = "SELECT * FROM GAME WHERE PLATFORM = ?";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, platform);
-		List<Game> games = q.list();
-		return games;
+		return q.list();
+		
 	}
 
 	public List<Game> getGamesByYear(int year) {
