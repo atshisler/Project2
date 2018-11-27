@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 import { PlatformComponent } from './platform/platform.component';
 import { GenreComponent } from './genre/genre.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppRouingModule } from './app-rouing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ProfileComponent } from './profile/profile.component';
     PlatformComponent,
     GenreComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
-    AppRouingModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
