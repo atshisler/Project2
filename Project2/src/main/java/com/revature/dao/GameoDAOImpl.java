@@ -72,7 +72,7 @@ public class GameoDAOImpl implements GameDAO {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
-		int gamePk = (Integer) s.save(game);
+		int gamePk = (Integer) s.save(game); 
 		tx.commit();
 		s.close();
 		return gamePk;

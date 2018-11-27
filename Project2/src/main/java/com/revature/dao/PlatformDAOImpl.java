@@ -16,26 +16,32 @@ public class PlatformDAOImpl implements PlatformDAO {
 		String sql = "SELECT * FROM Platform WHERE NAME = ?";
 		Query<Platform> q = s.createNativeQuery(sql, Platform.class);
 		q.setParameter(1, name);
-		Platform platform = q.getSingleResult();
+		Platform platform = q.uniqueResult();
 		return platform;
 	}
 
 	@Override
 	public int addPlatform(Platform platform) {
-		if (!platformExists(platform)) {
-			Session s = HibernateUtil.getSession();
-			Transaction tx = s.beginTransaction();
-			int platformPk = (Integer) s.save(platform);
-			tx.commit();
-			s.close();
-			return platformPk;
-		}
-		else
-			return getPlatform(platform.getName()).getId();
-		
+
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		int platformPk = (Integer) s.save(platform);
+		tx.commit();
+		s.close();
+		return platformPk;
+
+	}
+	
+	@Override
+	public void updatePlatform(Platform platform) {
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		s.merge(platform);
+		tx.commit();
+		s.close();
 	}
 
-	private boolean platformExists(Platform platform) {
+	public boolean platformExists(Platform platform) {
 		Session s = HibernateUtil.getSession();
 		String sql = "SELECT * FROM Platform WHERE NAME = ?";
 		Query<Platform> q = s.createNativeQuery(sql, Platform.class);

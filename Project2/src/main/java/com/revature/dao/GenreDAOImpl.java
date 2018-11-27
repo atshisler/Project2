@@ -13,17 +13,22 @@ public class GenreDAOImpl implements GenreDAO {
 	@Override
 	public int addGenre(Genre genre) {
 		// TODO Auto-generated method stub
-		if (!genreExists(genre)) {
-			Session s = HibernateUtil.getSession();
-			Transaction tx = s.beginTransaction();
-			int genrePk = (Integer) s.save(genre);
-			tx.commit();
-			s.close();
-			return genrePk;
-		}
-		else
-			return getGenre(genre.getName()).getId();
 
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		int genrePk = (Integer) s.save(genre);
+		tx.commit();
+		s.close();
+		return genrePk;
+	}
+	@Override
+	public void updateGenre(Genre genre) {
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		genre = getGenre(genre.getName());
+		s.merge(genre);
+		tx.commit();
+		s.close();
 	}
 
 	@Override
@@ -33,11 +38,12 @@ public class GenreDAOImpl implements GenreDAO {
 		String sql = "SELECT * FROM GENRE WHERE NAME = ?";
 		Query<Genre> q = s.createNativeQuery(sql, Genre.class);
 		q.setParameter(1, name);
-		Genre genre = q.getSingleResult();
+		Genre genre = q.uniqueResult();
 		return genre;
 	}
 
-	private boolean genreExists(Genre genre) {
+	@Override
+	public boolean genreExists(Genre genre) {
 		Session s = HibernateUtil.getSession();
 		String sql = "SELECT * FROM GENRE WHERE NAME = ?";
 		Query<Genre> q = s.createNativeQuery(sql, Genre.class);

@@ -23,35 +23,51 @@ public class Driver {
 		IgdbRequest igd = new IgdbRequest();
 		PlatformDAO pDAO = new PlatformDAOImpl();
 		GenreDAO gnDAO = new GenreDAOImpl();
-		//ud.createUser(new GameUser("GMan", "halflife4@gmail.com", "Freeman", "user"));
+		// ud.createUser(new GameUser("GMan", "halflife4@gmail.com", "Freeman",
+		// "user"));
 		System.out.println("Test: " + ud.getUser("G-Man"));
-		
-		Game testGame = new Game("TestMario3", "Review", "Nintendo", null);
-		Platform platform = new Platform("Gamecube");
-		Platform platform2 = new Platform("PS2");
+
+		/*Game testGame = new Game("TestZelda64", "Review", "Nintendo", null);
+
+		Platform platform = new Platform("Nintendo64");// pDAO.getPlatform("Gamecube");
+		Platform platform2 = new Platform("Switch");// pDAO.getPlatform("PS2");
 		Set<Platform> platformList = new HashSet<Platform>();
+
+		if (pDAO.platformExists(platform)) {
+			platform = pDAO.getPlatform(platform.getName());
+			pDAO.updatePlatform(platform);
+		} else {
+			pDAO.addPlatform(platform);
+		}
 		platformList.add(platform);
+		if (pDAO.platformExists(platform2)) {
+			platform2 = pDAO.getPlatform(platform2.getName());
+			pDAO.updatePlatform(platform2);
+		} else
+			pDAO.addPlatform(platform2);
 		platformList.add(platform2);
-		pDAO.addPlatform(platform);
-		pDAO.addPlatform(platform2);
-		Genre genre = new Genre("Platformer");
-		Genre genre2 = new Genre("RPG");
+		
+		
+		Genre genre = new Genre("Adventure");// gnDAO.getGenre("Platformer");
+
 		Set<Genre> genreList = new HashSet<Genre>();
+		if (gnDAO.genreExists(genre)) {
+			genre = gnDAO.getGenre(genre.getName());
+			gnDAO.updateGenre(genre);
+		} else
+			gnDAO.addGenre(genre);
 		genreList.add(genre);
-		genreList.add(genre2);
-		gnDAO.addGenre(genre);
-		gnDAO.addGenre(genre2);
+
 		testGame.setGenres(genreList);
 		testGame.setPlatforms(platformList);
-		
 		gd.addGame(testGame);
-		System.out.println(gd.getGameByName("TestMario3"));
-		//System.out.println(gd.getGameByName("TestMario3"));
-		//igd.getGameByTitle("Zelda");
-		//System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule Fantasy"));
-		//igd.getGameByTitle("Dark Souls");	
-		
+		System.out.println(gd.getGameByName("TestZelda64"));
+		*/
+		 //igd.getGameByTitle("Zelda");
+		// System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule
+		// Fantasy"));
+		// igd.getGameByTitle("Dark Souls");
+
 	}
-	
 
 }

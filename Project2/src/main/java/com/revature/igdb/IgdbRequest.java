@@ -28,7 +28,7 @@ import wrapper.Version;
 
 public class IgdbRequest {
 	// private String key = "c7b9a8a0deb857507ca18673690dd26b";
-	//private String key = "b7f579b4334207852addd702fe0e3442";
+	// private String key = "b7f579b4334207852addd702fe0e3442";
 	private String key = "15131b99aecc40473d93560443facb43";
 	private IGDBWrapper wrapper = new IGDBWrapper(key, Version.STANDARD, true);
 	private JSONArray gameInfo;
@@ -37,6 +37,7 @@ public class IgdbRequest {
 	private GameDAO gDAO = new GameoDAOImpl();
 	private PlatformDAO pDAO = new PlatformDAOImpl();
 	private GenreDAO gnDAO = new GenreDAOImpl();
+
 	public void getGameByTitle(String title) {
 		gameInfo = null;
 		success = false;
@@ -49,7 +50,7 @@ public class IgdbRequest {
 				System.out.println("Success!");
 				System.out.println(result);
 				gameInfo = result;
-				
+
 				createGame(gameInfo);
 			}
 
@@ -89,13 +90,13 @@ public class IgdbRequest {
 
 //-----------------------Helper Methods-------------------------//
 	private void createGame(JSONArray result) {
-		List<Game> newGames = new ArrayList<Game>();
+		List<Game> newGames = new ArrayList<>();
 		for (int i = 0; i < result.length(); i++) {
 			Game newGame = new Game();
-			// if(result.getJSONObject(i).has("name"))
+
 			newGame.setTitle(result.getJSONObject(i).getString("name"));
 			newGame.setCompany(getName(result.getJSONObject(i), "developers"));
-			
+
 			newGame.setPlatforms(getPlatformList(result.getJSONObject(i)));
 			newGame.setGenres(getGenreList(result.getJSONObject(i)));
 			if (result.getJSONObject(i).has("first_release_date")) {
@@ -123,38 +124,61 @@ public class IgdbRequest {
 		else
 			System.out.println("N/A");
 		return "N/A";
-	}//getName
-	
-	
-	private Set<Platform> getPlatformList(JSONObject result){
-		Set<Platform> nameList = new HashSet<Platform>();
+	}// getName
+
+	private Set<Platform> getPlatformList(JSONObject result) {
+		Set<Platform> nameList = new HashSet<>();
 		if (result.has("platforms")) {
 			JSONArray array = (JSONArray) result.get("platforms");
 			for (int x = 0; x < array.length(); x++) {
-				nameList.add(new Platform(array.getJSONObject(x).getString("name")));
-				pDAO.addPlatform(new Platform(array.getJSONObject(x).getString("name")));
+				Platform newPlat = new Platform(array.getJSONObject(x).getString("name"));
+				if (pDAO.platformExists(newPlat)) {
+					newPlat = pDAO.getPlatform(newPlat.getName());
+					pDAO.updatePlatform(newPlat);
+				} else
+					pDAO.addPlatform(newPlat);
+				nameList.add(newPlat);
 			} // developer array
 			return nameList;
 		} // getDeveloper name if it has one
 		else
 			System.out.println("N/A");
-		nameList.add(new Platform("N/A"));
+		Platform na = new Platform("N/A");
+		if (pDAO.platformExists(na)) {
+			na = pDAO.getPlatform("N/A");
+			pDAO.updatePlatform(na);
+		} else
+			pDAO.addPlatform(na);
+		nameList.add(na);
 		return nameList;
 	}
-	
-	private Set<Genre> getGenreList(JSONObject result){
-		Set<Genre> nameList = new HashSet<Genre>();
+
+	private Set<Genre> getGenreList(JSONObject result) {
+		Set<Genre> nameList = new HashSet<>();
 		if (result.has("genres")) {
 			JSONArray array = (JSONArray) result.get("genres");
 			for (int x = 0; x < array.length(); x++) {
-				nameList.add(new Genre(array.getJSONObject(x).getString("name")));
-				gnDAO.addGenre(new Genre(array.getJSONObject(x).getString("name")));
+				Genre newGN = new Genre(array.getJSONObject(x).getString("name"));
+				if (gnDAO.genreExists(newGN)) {
+					newGN = gnDAO.getGenre(newGN.getName());
+					gnDAO.updateGenre(newGN);
+				} 
+				else
+					gnDAO.addGenre(newGN);
+				nameList.add(newGN);
 			} // developer array
 			return nameList;
-		} // getDeveloper name if it has one
+		} // getGenre name if it has one
 		else
 			System.out.println("N/A");
-		nameList.add(new Genre("N/A"));
+		Genre na = new Genre("N/A");
+		if (gnDAO.genreExists(na)) {
+			na = gnDAO.getGenre("N/A");
+			gnDAO.updateGenre(na);
+		} 
+		else
+			gnDAO.addGenre(na);
+		nameList.add(na);
 		return nameList;
 	}
 

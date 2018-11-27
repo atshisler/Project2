@@ -2,10 +2,12 @@ package com.revature.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -30,23 +32,23 @@ public class Game {
 	private Date releaseDate;
 
 //@Transient
-	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE })
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "GAME_GENRE",
 			joinColumns = { @JoinColumn(name = "GAME_ID") },
 			inverseJoinColumns = {@JoinColumn(name = "GENRE_ID")}
 			)
-	private Set<Genre> genres;
+	private Set<Genre> genres = new HashSet<Genre>();
 
 //@Transient
-	@ManyToMany(cascade = {CascadeType.MERGE})
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(fetch = FetchType.EAGER)
+
 	@JoinTable(
 			name = "GAME_PLATFORM", 
 			joinColumns = { @JoinColumn(name = "GAME_ID") },
 			inverseJoinColumns = {@JoinColumn(name = "PLATFORM_ID")}
 			)
-	private Set<Platform> platforms;
+	private Set<Platform> platforms = new HashSet<Platform>();
 
 	public Game() {
 		// TODO Auto-generated constructor stub
