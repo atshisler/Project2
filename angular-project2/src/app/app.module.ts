@@ -8,7 +8,6 @@ import { GenreComponent } from './genre/genre.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SearchComponent } from './search/search.component';
 
@@ -19,7 +18,6 @@ import { SearchComponent } from './search/search.component';
     GenreComponent,
     DashboardComponent,
     ProfileComponent,
-    LoginComponent,
     SignupComponent,
     SearchComponent,
   ],
