@@ -10,12 +10,17 @@ h6
     color: lightgreen;
 }
 
-div #nav-tabContent
+li
 {
-    background-color: #e1efe2;
+    font-size: 20px;
 }
 
-div #nav-tab
+a
 {
-    background-color: #e1efe2;
+    color:green;
+}
+
+div #tabContent
+{
+    background-color: white;
 }
