@@ -7,7 +7,10 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component'
 
+
+
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch:'full'},
   { path: 'platform', component: PlatformComponent },
   { path: 'genre', component: GenreComponent},
   { path: 'home', component: DashboardComponent},
