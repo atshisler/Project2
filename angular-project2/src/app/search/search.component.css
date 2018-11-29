@@ -1,0 +1,15 @@
+iframe
+{
+    color: green;
+}
+
+h2
+{
+    color: lightgreen;
+    text-align: center;
+}
+
+.info
+{
+    display:inline;
+}

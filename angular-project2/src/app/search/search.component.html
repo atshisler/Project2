@@ -1,0 +1,59 @@
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+var tag = document.createElement('script');
+tag.id = 'iframe-demo';
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+player = new YT.Player('existing-iframe-example', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+});
+}
+</script>
+
+<script>
+  $http.get('search.json').success(function(data) 
+  { 
+    $scope.search = data
+  });
+
+  error(function(data, status, headers, config) {  });
+
+</script>
+
+<!--Scripts above-->
+
+<br>
+<div class="container col-lg-4">
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Go!</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" placeholder="Search. . ."></textarea>
+      </div>
+</div>
+
+<h2 *ngFor="let game of games">{{game.name}}</h2>
+
+<div id ="player" class="container"><iframe id="existing-iframe-example"
+  width="640" height="360"
+  src = "https://www.youtube.com/embed/G203e1HhixY"
+  frameborder="0"
+  style="border: solid 4px green"
+></iframe></div>
+
+<div id ="info" class="card" style="width: 18rem;" *ngFor="let game of games">
+  <div class="card-body">
+    <h5 class="card-title">{{game.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{game.genre}}</h6>
+    <p class="card-text">{{game.summary}} . . .</p>
+    <a href="{{game.url}}">Read More</a>
+</div>
+</div>

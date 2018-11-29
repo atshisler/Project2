@@ -1,0 +1,21 @@
+h2
+{
+    text-align: center;
+    color: green;
+}
+
+h6
+{
+    text-align: center;
+    color: lightgreen;
+}
+
+div #nav-tabContent
+{
+    background-color: #e1efe2;
+}
+
+div #nav-tab
+{
+    background-color: #e1efe2;
+}
