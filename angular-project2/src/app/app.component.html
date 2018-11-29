@@ -45,23 +45,25 @@
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="container col-lg-4">
-        <div id="Login">
-          <h1 class="modal-header text-center Welcome"> Welcome! </h1>
-          <h5 class="text-center Welcome"> Please sign in to enter your account </h5>
+      <div id="Login" class="modal-body mx-3">
+        <h1 class="modal-header text-center Welcome"> Welcome! </h1>
+        <h5 class="text-center Welcome"> Please sign in to enter your account </h5>
 
-          <form (submit)="onSubmit()">
-            <label for="username"> Username </label>
-            <input id="username" type="text" placeholder="username">
-            <input id="password" type="password" placeholder="password">
+        <form>
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" id="email" class="form-control validate" placeholder="email">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          <br>
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input id="password" type="password" class="form-control validate" placeholder="password">
+          <label data-error="wrong" data-success="right" for="password">Your password</label>
+          <br>
+          <div>
             <br>
-            <div>
-              <br>
-              <button id="submitBtn" type="submit" value="Submit" class="btn btn-success"> Submit</button>
-              <p> Don't have an account? Click <a href="/signup"> here</a></p>
-            </div>
-          </form>
-        </div>
+            <button id="submitBtn" type="submit" value="Submit" class="btn btn-success justify-content-center"> Submit</button>
+            <p> Don't have an account? Click <a href="/signup"> here</a></p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
