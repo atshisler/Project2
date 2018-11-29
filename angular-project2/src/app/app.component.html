@@ -1,67 +1,158 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/platform">Platform</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/genre">Genre</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile"><i class="fas fa-user"></i> Profile</a>
-        </li>
-        <li class="nav-item my-2 my-lg-0">
-            <a class="nav-link my-2 my-sm-0" data-toggle="modal" data-target="#modalLoginForm"><i class="fas fa-sign-in-alt"></i> Login</a>
-        </li>
-        <li>
-          <a class="nav-link" href="/search"><i class="fas fa-search"></i> Search</a>
-        </li>
-      </ul>
+  <a class="navbar-brand" href="/home">{{ title }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    </div>
-  </nav>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/platform">Platform</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/genre">Genre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#profile"><i class="fas fa-user"></i> Profile</a>
+      </li>
+      <li class="nav-item my-2 my-lg-0">
+        <a class="nav-link my-2 my-sm-0" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt"></i>
+          Login</a>
+      </li>
+      <li>
+        <a class="nav-link" href="/search"><i class="fas fa-search"></i> Search</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
 
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>{{ title }}</h1>
   <img width="300" alt="Angular Logo" src="../assets/gamesymbol.png" style="width:150px;">
 </div>
-<br>
+<hr />
 <div>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+<!-- Login modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="container col-lg-4">
-            <div id="Login">
-              <h1 class="modal-header text-center Welcome"> Welcome! </h1>
-              <h5 class = "text-center Welcome"> Please sign in to enter your account </h5>
-              
-              <form (submit)="onSubmit()">
-                <label for="username"> Username </label>
-                <input id = "username" type="text" placeholder="username">
-                <input id = "password" type="password" placeholder="password">
-                <br>
-                <div>
-                  <br>
-                  <button id="submitBtn" type="submit" value="Submit" class="btn btn-success"> Submit</button>
-                  <p> Don't have an account? Click <a href = "/signup"> here</a></p>
-                </div>
-              </form>
+      <div class="container col-lg-4">
+        <div id="Login">
+          <h1 class="modal-header text-center Welcome"> Welcome! </h1>
+          <h5 class="text-center Welcome"> Please sign in to enter your account </h5>
+
+          <form (submit)="onSubmit()">
+            <label for="username"> Username </label>
+            <input id="username" type="text" placeholder="username">
+            <input id="password" type="password" placeholder="password">
+            <br>
+            <div>
+              <br>
+              <button id="submitBtn" type="submit" value="Submit" class="btn btn-success"> Submit</button>
+              <p> Don't have an account? Click <a href="/signup"> here</a></p>
             </div>
-          </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Profile modal -->
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title mb-4">
+                <div class="d-flex justify-content-start">
+                  <div class="image-container">
+                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                    <br>
+                    <div class="container" style="align-content: center">
+                      <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+                      <input type="file" style="display: none;" id="profilePicture" name="file" />
+                    </div>
+                  </div>
+                  <div class="userData ml-3">
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">UserName</h2>
+                  </div>
+                  <div class="ml-auto">
+                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+
+                  <div class="tab-content ml-1" id="myTabContent">
+                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <label style="font-weight:bold;">Full Name</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          <form>
+                            <input type="text" placeholder="Enter your name">
+                          </form>
+                        </div>
+                      </div>
+                      <hr />
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <label style="font-weight:bold;">Birth Date</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          March 22, 1994.
+                        </div>
+                      </div>
+                      <hr />
+
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <label style="font-weight:bold;">Favorite Genre</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          Dropdown
+                        </div>
+                      </div>
+                      <hr />
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <label style="font-weight:bold;">Favrote Game:</label>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          <form>
+                            <input type="text" placeholder="Enter favorite game...">
+                          </form>
+                        </div>
+                      </div>
+                      <hr />
+                    </div>
+                  </div>
+                </div>
+                <button id="submitBtn" type="submit" value="Submit" class="btn btn-success">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

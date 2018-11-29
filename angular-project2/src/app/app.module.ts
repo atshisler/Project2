@@ -7,7 +7,6 @@ import { PlatformComponent } from './platform/platform.component';
 import { GenreComponent } from './genre/genre.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { SearchComponent } from './search/search.component';
 
@@ -17,9 +16,8 @@ import { SearchComponent } from './search/search.component';
     PlatformComponent,
     GenreComponent,
     DashboardComponent,
-    ProfileComponent,
     SignupComponent,
-    SearchComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
