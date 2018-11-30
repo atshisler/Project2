@@ -14,18 +14,20 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.GameDAO;
 import com.revature.dao.GameDAOImpl;
+import com.revature.igdb.IgdbRequest;
 import com.revature.model.Game;
 
 @Controller
 @RequestMapping("/game")
 public class GameController {
 	private GameDAO gd = new GameDAOImpl();
-	
+	private IgdbRequest ib = new IgdbRequest();
 	@GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGameByName(@PathVariable("name") String name) {
 		
 		Game game = gd.getGameByName(name);
+		
 		System.out.println(game);
 		try {
 			return new ObjectMapper().writeValueAsString(game);
@@ -39,6 +41,11 @@ public class GameController {
 	public String getGamesByName(@PathVariable("name") String name) {
 			
 		List<Game> games = gd.searchGameByName(name);
+		System.out.println(games);
+		if(games.isEmpty()) {
+			ib.getGameByTitle(name);
+			games = gd.searchGameByName(name);
+		}
 		System.out.println(games);
 		try {
 			return new ObjectMapper().writeValueAsString(games);

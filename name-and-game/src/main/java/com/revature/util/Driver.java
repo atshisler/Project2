@@ -26,7 +26,7 @@ public class Driver {
 		GenreDAO gnDAO = new GenreDAOImpl();
 		// ud.createUser(new GameUser("GMan", "halflife4@gmail.com", "Freeman",
 		// "user"));
-		System.out.println("Test: " + ud.getUser("GMan"));
+		//System.out.println("Test: " + ud.getUser("GMan"));
 
 		
 		/*
@@ -57,7 +57,8 @@ public class Driver {
 		//igd.getGameByTitle("Zelda");
 		//System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule Fantasy"));
 		//igd.getGameByTitle("Halo");
-		System.out.println(gd.searchGameByName("Halo"));
+		igd.getGameByTitle("Zelda");
+		System.out.println(gd.searchGameByName("Zelda"));
 		//System.out.println(gd.getGameByGenre("Shooter"));
 		//System.out.println(gd.searchGameByName("zelda"));
 		// igd.getGameByTitle("Dark Souls");

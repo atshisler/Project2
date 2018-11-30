@@ -30,8 +30,6 @@ public class Game {
 	private String company;
 	@Column(name = "RELEASEDATE")
 	private Date releaseDate;
-	@Column(name = "SUMMARY")
-	private String summary;
 
 //@Transient
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -72,6 +70,20 @@ public class Game {
 		this.company = company;
 		this.releaseDate = releaseDate;
 	}
+	
+	
+	public Game(String title, String review, String company, Date releaseDate, Set<Genre> genres,
+			Set<Platform> platforms) {
+		super();
+		this.title = title;
+		this.review = review;
+		this.company = company;
+		this.releaseDate = releaseDate;
+		this.genres = genres;
+		this.platforms = platforms;
+	}
+
+	
 	public int getId() {
 		return id;
 	}
@@ -127,6 +139,8 @@ public class Game {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
+
+	
 
 	@Override
 	public String toString() {
@@ -191,6 +205,7 @@ public class Game {
 			return false;
 		return true;
 	}
+
 	
 	
 
