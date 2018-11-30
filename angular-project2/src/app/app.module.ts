@@ -28,7 +28,6 @@ import { SearchComponent } from './search/search.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-
   submitted = false;
 
   onSubmit() { this.submitted = true; }

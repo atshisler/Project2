@@ -40,22 +40,21 @@ player = new YT.Player('existing-iframe-example', {
       </div>
 </div>
 
-<h2 *ngFor="let game of games">{{game.name}}</h2>
+<h2>{{games.title}}</h2>
 
-<div id ="player" class="container"><iframe id="existing-iframe-example"
+<!-- <div id ="player" class="container"><iframe id="existing-iframe-example"
   width="640" height="360"
   src = "https://www.youtube.com/embed/G203e1HhixY"
   frameborder="0"
   style="border: solid 4px green"
-></iframe></div>
+></iframe></div> -->
 <br/>
 <div class="container col-4">
-    <div id ="info" class="card" style="width: 18rem;" *ngFor="let game of games">
+    <div id ="info" class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">{{game.name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{game.genre}}</h6>
+          <h5 class="card-title">{{games.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{games.review}}</h6>
           <p class="card-text">{{game.summary}} . . .</p>
-          <a href="{{game.url}}">Read More</a>
       </div>
       </div>
 </div>
