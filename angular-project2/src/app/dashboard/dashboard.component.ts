@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit {
       {
         this.games = data;
         console.log(data);
-        console.log(this.games.platforms.name);
         //console.log(data);
      });
   }
