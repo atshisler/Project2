@@ -96,6 +96,7 @@ public class IgdbRequest {
 			newGame.setTitle(result.getJSONObject(i).getString("name"));
 			newGame.setCompany(getName(result.getJSONObject(i), "developers"));
 			newGame.setPlatforms(getPlatformList(result.getJSONObject(i)));
+			newGame.setGenres(getGenreList(result.getJSONObject(i)));
 			if (result.getJSONObject(i).has("first_release_date")) {
 				Date date = new Date((Long) result.getJSONObject(i).get("first_release_date"));
 				newGame.setReleaseDate(date);

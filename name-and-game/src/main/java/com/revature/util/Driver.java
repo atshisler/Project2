@@ -56,13 +56,13 @@ public class Driver {
 		 */
 		//igd.getGameByTitle("Zelda");
 		//System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule Fantasy"));
-		//igd.getGameByTitle("Halo");
-		igd.getGameByTitle("Zelda");
-		System.out.println(gd.searchGameByName("Zelda"));
+		igd.getGameByTitle("Halo");
+		//igd.getGameByTitle("Zelda");
+		//System.out.println(gd.getGameByGenre());
 		//System.out.println(gd.getGameByGenre("Shooter"));
 		//System.out.println(gd.searchGameByName("zelda"));
-		// igd.getGameByTitle("Dark Souls");
-
+		 igd.getGameByTitle("Dark Souls");
+		//System.out.println(pDAO.getGameByPlatform("Playstation 4"));
 	}
 
 }
