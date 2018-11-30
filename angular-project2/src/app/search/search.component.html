@@ -47,15 +47,15 @@ player = new YT.Player('existing-iframe-example', {
   style="border: solid 4px green"
 ></iframe></div> -->
 <br/>
-<div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        <div class="card-body" *ngFor="let game of games">
-          <h2 class="card-title">{{game.title}}</h2>
-          <h6 class="card-subtitle mb-2 text-muted">{{game.company}}</h6>
-          <li class="card-text">{{game.review}}</li>
-          <ul>
-            <li>Played on {{game.platform}}</li>
-          </ul>
+<br>
+<div class="container">
+  <div class="card-deck" *ngFor="let game of games">
+    <div class="card">
+      <div class="card-body" >
+        <h5 class="card-title"><i class="fas fa-gamepad"></i> {{game.title}}</h5>
+        <p class="card-text">{{game.platforms[0].name}}</p>
+        <p class="card-text">{{game.genres[0].name}}</p>
       </div>
-      </div>
+    </div>
 </div>
+

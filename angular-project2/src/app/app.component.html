@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home']">Home</a>
+        <a class="nav-link" [routerLink]="['/home']"><i class="fas fa-home"></i> Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/platform']">Platform</a>
@@ -24,7 +24,7 @@
           Login</a>
       </li>
       <li>
-        <!--<a class="nav-link" routerLink="/search"><i class="fas fa-search"></i> Search</a>-->
+        <a class="nav-link" routerLink="/search"><i class="fas fa-search"></i> Search</a>
       </li>
     </ul>
 
@@ -80,7 +80,7 @@
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
                   <div class="image-container">
-                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                    <img src="../assets/gamesymbol.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                     <br>
                     <div class="container" style="align-content: center">
                       <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <div class="userData ml-3">
-                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">UserName</h2>
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">GameBoy</h2>
                   </div>
                   <div class="ml-auto">
                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -105,7 +105,7 @@
 
                       <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
-                          <label style="font-weight:bold;">Full Name</label>
+                          <label style="font-weight:bold;">First name</label>
                         </div>
                         <div class="col-md-8 col-6">
                           <form>
@@ -130,9 +130,16 @@
                         <div class="col-sm-3 col-md-2 col-5">
                           <label style="font-weight:bold;">Favorite Genre</label>
                         </div>
-                        <div class="col-md-8 col-6">
-                          Dropdown
-                        </div>
+                            <div class="dropdown col-md-8 col-6">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Genres
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Horror</a>
+                                  <a class="dropdown-item" href="#">RPG</a>
+                                </div>
+                              </div>
                       </div>
                       <hr />
                       <div class="row">

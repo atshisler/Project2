@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
 
-  private _url: string ='http://localhost:8080/name-and-game/test/game';
+  private _url: string ='http://localhost:8080/name-and-game/game/search/zelda';
 
   constructor(private http: HttpClient) { }
 

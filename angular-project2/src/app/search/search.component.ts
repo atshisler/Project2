@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
 
-  private _url: string ='http://localhost:8080/name-and-game/game/search/zelda';
+  private _url: string ='http://localhost:8080/name-and-game/game/search/';
   games;
 
   constructor(private _searchService: SearchService, private http: HttpClient) { }
