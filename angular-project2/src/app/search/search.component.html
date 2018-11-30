@@ -53,8 +53,11 @@ player = new YT.Player('existing-iframe-example', {
     <div id ="info" class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{games.title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{games.review}}</h6>
-          <p class="card-text">{{game.summary}} . . .</p>
+          <h6 class="card-subtitle mb-2 text-muted">Made by: {{games.company}}</h6>
+          <p class="card-text">{{games.review}}</p>
+          <ul>
+            <li *ngFor="let game of games">Played on {{game.platform}}</li>
+          </ul>
       </div>
       </div>
 </div>
