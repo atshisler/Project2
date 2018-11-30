@@ -30,6 +30,8 @@ public class Game {
 	private String company;
 	@Column(name = "RELEASEDATE")
 	private Date releaseDate;
+	@Column(name = "SUMMARY")
+	private String summary;
 
 //@Transient
 	@ManyToMany(fetch = FetchType.EAGER)

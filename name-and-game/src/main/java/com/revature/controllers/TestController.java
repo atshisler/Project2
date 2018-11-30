@@ -1,10 +1,6 @@
 package com.revature.controllers;
 
-import java.sql.Date;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.revature.dao.GameDAO;
+import com.revature.dao.GameDAOImpl;
 import com.revature.model.Game;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/test")
 public class TestController {
+	
+	private GameDAO gd = new GameDAOImpl();
 	@GetMapping(value="/test", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String test() {
 		return "{ \"test\": 1000000 }";
@@ -28,7 +27,7 @@ public class TestController {
 	
 	@GetMapping(value = "/game", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getGame() {
-		Game game = new Game(1, "Generic Game", "Generic Review", "Generic Company", new Date(new java.util.Date().getTime()));
+		Game game = gd.getGameByName("Zelda: The Wand of Gamelon");;
 		try {
 			return new ObjectMapper().writeValueAsString(game);
 		} catch (JsonProcessingException e) {
