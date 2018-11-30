@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.net.HttpURLConnection;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -36,7 +37,7 @@ public class GameController {
 	@GetMapping(value = "search/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGamesByName(@PathVariable("name") String name) {
-		
+			
 		List<Game> games = gd.searchGameByName(name);
 		System.out.println(games);
 		try {
