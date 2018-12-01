@@ -36,7 +36,7 @@ public class Driver {
 		//igd.getGameByTitle("Zelda");
 		//System.out.println(gd.getGameByGenre());
 		//System.out.println(gd.getGameByGenre("Shooter"));
-		//System.out.println(gd.searchGameByName("zelda"));
+		System.out.println(gd.searchGameByName("zelda"));
 		 //igd.getGameByTitle("Dark Souls");
 		System.out.println(gnDAO.getGameByGenre("Adventure"));
 		//System.out.println(pDAO.getGameByPlatform("Playstation 4"));

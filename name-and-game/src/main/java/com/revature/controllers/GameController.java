@@ -1,6 +1,5 @@
 package com.revature.controllers;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -14,6 +13,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.GameDAO;
 import com.revature.dao.GameDAOImpl;
+import com.revature.dao.GenreDAO;
+import com.revature.dao.GenreDAOImpl;
 import com.revature.igdb.IgdbRequest;
 import com.revature.model.Game;
 
@@ -22,12 +23,13 @@ import com.revature.model.Game;
 public class GameController {
 	private GameDAO gd = new GameDAOImpl();
 	private IgdbRequest ib = new IgdbRequest();
+	private GenreDAO gnD = new GenreDAOImpl();
 	@GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGameByName(@PathVariable("name") String name) {
-		
+
 		Game game = gd.getGameByName(name);
-		
+
 		System.out.println(game);
 		try {
 			return new ObjectMapper().writeValueAsString(game);
@@ -35,31 +37,42 @@ public class GameController {
 			throw new RuntimeException("Error Parsing Data");
 		}
 	}
-	
+
 	@GetMapping(value = "search/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGamesByName(@PathVariable("name") String name) {
-			
+
 		List<Game> games = gd.searchGameByName(name);
 		System.out.println(games);
-		if(games.isEmpty()) {
+		if (games.isEmpty()) {
 			ib.getGameByTitle(name);
 			games = gd.searchGameByName(name);
 		}
-		System.out.println(games);
 		try {
 			return new ObjectMapper().writeValueAsString(games);
 		} catch (JsonProcessingException e) {
 			throw new RuntimeException("Error Parsing Data");
 		}
 	}
-	
+
+	@GetMapping(value = "searchGenre/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getGamesByGenre(@PathVariable("name") String name) {
+		List<Game> games = gnD.getGameByGenre(name);
+		try {
+			return new ObjectMapper().writeValueAsString(games);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException("Error Parsing Data");
+		}
+		
+	}
+
 	@GetMapping(value = "dev/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGamesByCompany(@PathVariable("name") String name) {
 		List<Game> games = gd.getGamesByCompany(name);
-		if(games.isEmpty()) {
-			//ib.getGameByTitle(name);
+		if (games.isEmpty()) {
+			// ib.getGameByTitle(name);
 			games = gd.searchGameByName(name);
 		}
 		try {
@@ -68,5 +81,5 @@ public class GameController {
 			throw new RuntimeException("Error Parsing Data");
 		}
 	}
-	
+
 }

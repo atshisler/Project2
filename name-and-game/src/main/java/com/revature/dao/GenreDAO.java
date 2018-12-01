@@ -11,5 +11,5 @@ public interface GenreDAO {
 	public int addGenre(Genre genre);
 	public boolean genreExists(Genre genre);
 	public void updateGenre(Genre genre);
-	public ArrayList<Game> getGameByGenre(String name);
+	public List<Game> getGameByGenre(String name);
 }
