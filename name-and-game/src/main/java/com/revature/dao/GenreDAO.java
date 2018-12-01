@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.model.Game;
@@ -10,4 +11,5 @@ public interface GenreDAO {
 	public int addGenre(Genre genre);
 	public boolean genreExists(Genre genre);
 	public void updateGenre(Genre genre);
+	public ArrayList<Game> getGameByGenre(String name);
 }

@@ -35,9 +35,9 @@ public class GameDAOImpl implements GameDAO {
 	public List<Game> getGamesByCompany(String company) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM GAME WHERE COMPANY = ?";
+		String sql = "SELECT * FROM GAME WHERE UPPER(COMPANY) LIKE UPPER(?)";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
-		q.setParameter(1, company);
+		q.setParameter(1, "%" + company + "%");
 		return q.list();
 	}
 

@@ -54,4 +54,19 @@ public class GameController {
 		}
 	}
 	
+	@GetMapping(value = "dev/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getGamesByCompany(@PathVariable("name") String name) {
+		List<Game> games = gd.getGamesByCompany(name);
+		if(games.isEmpty()) {
+			//ib.getGameByTitle(name);
+			games = gd.searchGameByName(name);
+		}
+		try {
+			return new ObjectMapper().writeValueAsString(games);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException("Error Parsing Data");
+		}
+	}
+	
 }
