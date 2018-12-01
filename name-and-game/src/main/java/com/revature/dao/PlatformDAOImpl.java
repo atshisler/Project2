@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.revature.model.Game;
+import com.revature.model.Genre;
 import com.revature.model.Platform;
 import com.revature.util.HibernateUtil;
 
@@ -23,28 +24,20 @@ public class PlatformDAOImpl implements PlatformDAO {
 		return platform;
 	}
 
-	public ArrayList<Game> getGameByPlatform(String name){
+	public List<Game> getGameByPlatform(String name) {
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM PLATFORM WHERE NAME = ?";
+		String sql = "SELECT * FROM PLATFORM WHERE UPPER(NAME) = UPPER(?)";
 		Query<Platform> q = s.createNativeQuery(sql, Platform.class);
 		q.setParameter(1, name);
 		Platform platform = q.uniqueResult();
 		System.out.println(platform);
-		sql = "SELECT GAME_ID from GAME_PLATFORM WHERE PLATFORM_ID = ?";
-		Query<Integer> qInt = s.createNativeQuery(sql, Integer.class);
-		List<Integer> gIdList = qInt.list();
-		System.out.println(gIdList);
-		ArrayList<Game> games = new ArrayList<Game>();
-		for(int i = 0; i < gIdList.size(); i++)
-		{
-			sql = "SELECT *from GAME WHERE GAME_ID = ?";
-			Query<Game> game = s.createNativeQuery(sql, Game.class);
-			System.out.println(game.uniqueResult());
-			games.add(game.uniqueResult());
-		}
-		
-		return games;
+		sql = "SELECT * FROM GAME LEFT JOIN GAME_PLATFORM ON GAME_PLATFORM.GAME_ID = GAME.GAME_ID WHERE GAME_PLATFORM.PLATFORM_ID = ?";
+		Query<Game> qG = s.createNativeQuery(sql, Game.class);
+		qG.setParameter(1, platform.getId());
+		return qG.list();
+
 	}
+
 	@Override
 	public int addPlatform(Platform platform) {
 
@@ -56,7 +49,7 @@ public class PlatformDAOImpl implements PlatformDAO {
 		return platformPk;
 
 	}
-	
+
 	@Override
 	public void updatePlatform(Platform platform) {
 		Session s = HibernateUtil.getSession();
