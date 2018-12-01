@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-search',
@@ -9,8 +10,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
 
-  private _url: string ='http://localhost:8080/name-and-game/game/search/';
+  private _url: string ='http://localhost:8080/name-and-game/game/search/Isaac';
   games;
+  
+  
+    // search: string = '';
+    // private _urlSearch: string = `http://localhost:8080/name-and-game/game/search/${this.search}`;
+  
+
+  /* 
+    string ''
+    string contains user input
+    private url2: string='address'${string}
+  */
 
   constructor(private _searchService: SearchService, private http: HttpClient) { }
 
@@ -22,5 +34,10 @@ export class SearchComponent implements OnInit {
         console.log(data);
      })
   }
+
+  // searchGame()
+  // {
+  //   return this.http.get<object[]>(this._urlSearch).pipe(map(data => data));
+  // }
 
 }

@@ -34,7 +34,12 @@ player = new YT.Player('existing-iframe-example', {
 <div class="container col-lg-4">
     <form class="form-inline md-form mr-auto mb-4">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Search</a>
+        <button class="button" >Search</button>
+
+        <!--
+        <input class="form-control mr-sm-2" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">
+        <button class="button" (click)='searchGame()'>Search</button>
+        -->
       </form>
 </div>
 
