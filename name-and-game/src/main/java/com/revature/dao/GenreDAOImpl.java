@@ -45,6 +45,13 @@ public class GenreDAOImpl implements GenreDAO {
 		Genre genre = q.uniqueResult();
 		return genre;
 	}
+	
+	public List<Genre> getAllGenres(){
+		Session s = HibernateUtil.getSession();
+		String sql = "SELECT * FROM GENRE";
+		Query<Genre> q = s.createNativeQuery(sql, Genre.class);
+		return q.list();
+	}
 
 	@Override
 	public boolean genreExists(Genre genre) {

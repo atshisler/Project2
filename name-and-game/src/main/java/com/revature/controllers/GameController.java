@@ -19,6 +19,8 @@ import com.revature.dao.PlatformDAO;
 import com.revature.dao.PlatformDAOImpl;
 import com.revature.igdb.IgdbRequest;
 import com.revature.model.Game;
+import com.revature.model.Genre;
+import com.revature.model.Platform;
 
 @Controller
 @RequestMapping("/game")
@@ -69,6 +71,28 @@ public class GameController {
 			throw new RuntimeException("Error Parsing Data");
 		}
 		
+	}
+	
+	@GetMapping(value = "genres", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getGenres() {
+		List<Genre> genres = gnD.getAllGenres();
+		try {
+			return new ObjectMapper().writeValueAsString(genres);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException("Error Parsing Data");
+		}
+	}
+	
+	@GetMapping(value = "platforms", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getPlatforms() {
+		List<Platform> platforms= pD.getAllPlatforms();
+		try {
+			return new ObjectMapper().writeValueAsString(platforms);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException("Error Parsing Data");
+		}
 	}
 	
 	@GetMapping(value = "searchPlatform/{name}", produces = MediaType.APPLICATION_JSON_VALUE)

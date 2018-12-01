@@ -11,4 +11,5 @@ public interface PlatformDAO {
 	public boolean platformExists(Platform platform);
 	public void updatePlatform(Platform platform);
 	public List<Game> getGameByPlatform(String name);
+	public List<Platform> getAllPlatforms();
 }

@@ -1,4 +1,5 @@
 package com.revature.util;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -26,20 +27,19 @@ public class Driver {
 		GenreDAO gnDAO = new GenreDAOImpl();
 		// ud.createUser(new GameUser("GMan", "halflife4@gmail.com", "Freeman",
 		// "user"));
-		//System.out.println("Test: " + ud.getUser("GMan"));
+		// System.out.println("Test: " + ud.getUser("GMan"));
 
-		
-		
-		//igd.getGameByTitle("Zelda");
-		//System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule Fantasy"));
-		//igd.getGameByTitle("Halo");
-		//igd.getGameByTitle("Zelda");
-		//System.out.println(gd.getGameByGenre());
-		//System.out.println(gd.getGameByGenre("Shooter"));
-		System.out.println(gd.searchGameByName("zelda"));
-		 //igd.getGameByTitle("Dark Souls");
-
-		System.out.println(pDAO.getGameByPlatform("Playstation 4"));
+		// igd.getGameByTitle("Zelda");
+		// System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule
+		// Fantasy"));
+		// igd.getGameByTitle("Halo");
+		// igd.getGameByTitle("Zelda");
+		// System.out.println(gd.getGameByGenre());
+		// System.out.println(gd.getGameByGenre("Shooter"));
+		// System.out.println(gd.searchGameByName("zelda"));
+		// igd.getGameByTitle("Dark Souls");
+		System.out.println(gnDAO.getAllGenres());
+		// System.out.println(pDAO.getGameByPlatform("Playstation 4"));
 	}
 
 }

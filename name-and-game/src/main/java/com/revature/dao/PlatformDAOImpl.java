@@ -49,6 +49,13 @@ public class PlatformDAOImpl implements PlatformDAO {
 		return platformPk;
 
 	}
+	
+	public List<Platform> getAllPlatforms(){
+		Session s = HibernateUtil.getSession();
+		String sql = "SELECT * FROM Platform";
+		Query<Platform> q = s.createNativeQuery(sql, Platform.class);
+		return q.list();
+	}
 
 	@Override
 	public void updatePlatform(Platform platform) {
