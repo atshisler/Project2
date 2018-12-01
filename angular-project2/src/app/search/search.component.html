@@ -1,40 +1,9 @@
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-var tag = document.createElement('script');
-tag.id = 'iframe-demo';
-tag.src = 'https://www.youtube.com/iframe_api';
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-var player;
-function onYouTubeIframeAPIReady() {
-player = new YT.Player('existing-iframe-example', {
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-});
-}
-</script>
-
-<script>
-  $http.get('search.json').success(function(data) 
-  { 
-    $scope.search = data
-  });
-
-  error(function(data, status, headers, config) {  });
-
-</script>
-
-<!--Scripts above-->
 
 <br>
 <div class="container col-lg-4">
     <form class="form-inline md-form mr-auto mb-4">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="button" >Search</button>
+        <button class="button" id="search" [(ngModel)] = "getGames()">Search</button>
 
         <!--
         <input class="form-control mr-sm-2" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">
