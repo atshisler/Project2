@@ -20,38 +20,38 @@ public class TestUserDAO {
 		@Test
 		public void testCreateUser() {
 			
-			/*GameUser user = new GameUser("CreateMe", "test@testmail.com", "password", "user");
+			GameUser user = new GameUser("CreateMe", "test@testmail.com", "password", "user");
 			
 			int id = uDAO.createUser(user);
 			GameUser result = uDAO.getUserbyId(id);
 			assertEquals("CreateMe", result.getUsername());
 			assertEquals("test@testmail.com", result.getEmail());
 			assertEquals("password", result.getPassword());
-			assertEquals("user", result.getRole());*/
+			assertEquals("user", result.getRole());
 				
 		} 
 	//**************************************getUser()*****************************************************//
 
 		@Test
 		public void testGetUser() {		
-			/*GameUser result = uDAO.getUser("G-Man");
+			GameUser result = uDAO.getUser("GMan");
 			System.out.println(result);
-			assertEquals("G-Man", result.getUsername());
-			assertEquals("halflife3@gmail.com", result.getEmail());
+			assertEquals("GMan", result.getUsername());
+			assertEquals("halflife4@gmail.com", result.getEmail());
 			assertEquals("Freeman", result.getPassword());
-			assertEquals("user", result.getRole());*/
+			assertEquals("user", result.getRole());
 		}
 	//*************************************testUpdateUser()******************************************************//
 		@Test
 		public void testUpdateUser() {
-			/*GameUser ogResult = uDAO.getUser("Testman");
+			GameUser ogResult = uDAO.getUser("Testman");
 			ogResult.setPassword("updated");
 			uDAO.updateUser(ogResult);
 			GameUser uResult = uDAO.getUserbyId(ogResult.getId());
 			assertEquals("Testman", uResult.getUsername());
 			assertEquals("test1@testmail.com", uResult.getEmail());
 			assertEquals("updated", uResult.getPassword());
-			assertEquals("user", uResult.getRole());		*/	
+			assertEquals("user", uResult.getRole());			
 		}
 	//*************************************testUpdateUser()******************************************************//
 		public void testGetAllUsers() {
@@ -63,18 +63,18 @@ public class TestUserDAO {
 	//*************************************Initialization******************************************************//
 		@After
 		public void deleteUser() {
-			/*GameUser user = uDAO.getUser("CreateMe");
+			GameUser user = uDAO.getUser("CreateMe");
 			System.out.println(user);
 			if(user != null)
-				uDAO.deleteUser(user.getId());*/
+				uDAO.deleteUser(user.getId());
 
 
 		}
 		
 		@After
 		public void resetPassword() {
-			/*GameUser ogResult = uDAO.getUser("Testman");
-			ogResult.setPassword("password");*/
+			GameUser ogResult = uDAO.getUser("Testman");
+			ogResult.setPassword("password");
 		}
 		
 	//******************************************************************************************************//

@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO{
 		return userPk;
 	}
 	public void updateUser(GameUser user) {
-		// TODO Auto-generated method stub
+
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		s.update(user);
@@ -30,18 +30,16 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	public GameUser getUser(String name) {
-		// TODO Auto-generated method stub
+
 		Session s = HibernateUtil.getSession();
 		String sql = "SELECT * FROM GAMEUSER WHERE USERNAME = ?";
 		Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
 		q.setParameter(1, name);
-		GameUser user = q.getSingleResult();
-		return user;
-		
+		return q.uniqueResult();
 	}
 
 	public List<GameUser> getAllUsers() {
-		// TODO Auto-generated method stub
+
 		Session s = HibernateUtil.getSession();
 		List<GameUser> users = s.createQuery("from Cave", GameUser.class).list();
 		s.close();
@@ -49,17 +47,17 @@ public class UserDAOImpl implements UserDAO{
 	}
 	@Override
 	public GameUser getUserbyId(int id) {
-		// TODO Auto-generated method stub
+
 		Session s = HibernateUtil.getSession();
 		String sql = "SELECT * FROM GAMEUSER WHERE USER_ID = ?";
 		Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
 		q.setParameter(1, id);
-		GameUser user = q.getSingleResult();
+		GameUser user = q.uniqueResult();
 		return user;
 	}
 	@Override
 	public void deleteUser(int id) {
-		// TODO Auto-generated method stub
+
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		GameUser user = s.get(GameUser.class, id);

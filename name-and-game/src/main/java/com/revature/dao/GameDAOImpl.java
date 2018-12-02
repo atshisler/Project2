@@ -16,7 +16,7 @@ public class GameDAOImpl implements GameDAO {
 	public Game getGameByName(String name) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM GAME WHERE GAME_ID = ?";
+		String sql = "SELECT * FROM GAME WHERE TITLE = ?";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, name);
 		Game game = q.getSingleResult();
@@ -26,7 +26,7 @@ public class GameDAOImpl implements GameDAO {
 	public Game getGameById(int id) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtil.getSession();
-		String sql = "SELECT * FROM GAME WHERE TITLE = ?";
+		String sql = "SELECT * FROM GAME WHERE GAME_ID = ?";
 		Query<Game> q = s.createNativeQuery(sql, Game.class);
 		q.setParameter(1, id);
 		Game game = q.getSingleResult();
