@@ -16,7 +16,7 @@ public class TestUserDAO {
 	private UserDAO uDAO = new UserDAOImpl();
 	
 	//**************************************createUser()*****************************************************//
-		
+		@Ignore
 		@Test
 		public void testCreateUser() {
 			
@@ -31,7 +31,7 @@ public class TestUserDAO {
 				
 		} 
 	//**************************************getUser()*****************************************************//
-
+		@Ignore
 		@Test
 		public void testGetUser() {		
 			GameUser result = uDAO.getUser("GMan");
@@ -42,6 +42,8 @@ public class TestUserDAO {
 			assertEquals("user", result.getRole());
 		}
 	//*************************************testUpdateUser()******************************************************//
+		
+		@Ignore
 		@Test
 		public void testUpdateUser() {
 			GameUser ogResult = uDAO.getUser("Testman");
@@ -54,6 +56,8 @@ public class TestUserDAO {
 			assertEquals("user", uResult.getRole());			
 		}
 	//*************************************testUpdateUser()******************************************************//
+		
+		@Ignore
 		public void testGetAllUsers() {
 			fail("Not yet implemented"); 
 		}
@@ -61,6 +65,8 @@ public class TestUserDAO {
 
 
 	//*************************************Initialization******************************************************//
+		
+		@Ignore
 		@After
 		public void deleteUser() {
 			GameUser user = uDAO.getUser("CreateMe");
@@ -70,7 +76,7 @@ public class TestUserDAO {
 
 
 		}
-		
+		@Ignore
 		@After
 		public void resetPassword() {
 			GameUser ogResult = uDAO.getUser("Testman");

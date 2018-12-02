@@ -42,7 +42,7 @@ public class IgdbRequest {
 		success = false;
 
 		Parameters params = new Parameters().addSearch(title).addFields("name,first_release_date")
-				.addFilter("[version_parent][not_exists]=1").addExpand("genres,developers,platforms").addLimit("5");
+				.addFilter("[version_parent][not_exists]=1").addExpand("genres,developers,platforms").addLimit("15");
 		wrapper.games(params, new OnSuccessCallback() {
 			public void onSuccess(JSONArray result) {
 				// JSONArray containing 2 titles
@@ -57,10 +57,6 @@ public class IgdbRequest {
 				System.out.println("Error");// Do something on error
 			}
 		});
-
-	}
-
-	public void setGameList(String title) {
 
 	}
 
@@ -105,23 +101,17 @@ public class IgdbRequest {
 			newGames.add(newGame);
 			gDAO.addGame(newGame);
 		} // result array
-			// for(int x = 0; x < newGames.size(); x++)
-			// System.out.println(newGames.get(x));
 		System.out.println(newGames);
 
 	}// createGame
 
-	// returns name value of a given key
+	// returns the first name value of a given key (used for company and name)
 	private String getName(JSONObject result, String data) {
 		if (result.has(data)) {
-
 			JSONArray array = (JSONArray) result.get(data);
-			for (int x = 0; x < array.length(); x++) {
-				return array.getJSONObject(x).getString("name");
-			} // developer array
+			return array.getJSONObject(0).getString("name");
 		} // getDeveloper name if it has one
-		else
-			System.out.println("N/A");
+
 		return "N/A";
 	}// getName
 
@@ -134,20 +124,21 @@ public class IgdbRequest {
 				if (pDAO.platformExists(newPlat)) {
 					newPlat = pDAO.getPlatform(newPlat.getName());
 					pDAO.updatePlatform(newPlat);
-				} else
+				} else {
 					pDAO.addPlatform(newPlat);
+				}
 				nameList.add(newPlat);
 			} // developer array
 			return nameList;
 		} // getDeveloper name if it has one
-		else
-			System.out.println("N/A");
+
 		Platform na = new Platform("N/A");
 		if (pDAO.platformExists(na)) {
 			na = pDAO.getPlatform("N/A");
 			pDAO.updatePlatform(na);
-		} else
+		} else {
 			pDAO.addPlatform(na);
+		}
 		nameList.add(na);
 		return nameList;
 	}
@@ -161,9 +152,9 @@ public class IgdbRequest {
 				if (gnDAO.genreExists(newGN)) {
 					newGN = gnDAO.getGenre(newGN.getName());
 					gnDAO.updateGenre(newGN);
-				} 
-				else
+				} else {
 					gnDAO.addGenre(newGN);
+				}
 				nameList.add(newGN);
 			} // developer array
 			return nameList;
@@ -174,9 +165,9 @@ public class IgdbRequest {
 		if (gnDAO.genreExists(na)) {
 			na = gnDAO.getGenre("N/A");
 			gnDAO.updateGenre(na);
-		} 
-		else
+		} else {
 			gnDAO.addGenre(na);
+		}
 		nameList.add(na);
 		return nameList;
 	}
