@@ -11,5 +11,6 @@ public interface UserDAO {
 	GameUser getUserbyId(int id);
 	void deleteUser(int id);
 	List<GameUser> getAllUsers();
+	GameUser login(String email, String password);
 	
 }

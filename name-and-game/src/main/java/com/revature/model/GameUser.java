@@ -10,26 +10,29 @@ import javax.persistence.*;
 public class GameUser {
 	@Id
 	@Column(name = "User_ID")
-	@SequenceGenerator(name="userSequence", allocationSize=1, sequenceName="SQ_USER_PK")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userSequence")
+	@SequenceGenerator(name = "userSequence", allocationSize = 1, sequenceName = "SQ_USER_PK")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSequence")
 	private int id;
-	
+
 	@Column(name = "USERNAME", unique = true)
 	private String username;
-	
+
 	@Column(name = "EMAIL", unique = true)
 	private String email;
-	
+
 	@Column(name = "PASSWORD")
 	private String password;
-	
+
 	@Column(name = "ROLE")
 	private String role;
+
+	@Column(name = "FAVORITEGENRE")
+	private String genre;
 	
-	//@ManyToOne
-	//@JoinColumn(name="GAME_ID")
-	//List<Game> gameList = new ArrayList<>();
-	
+	@ManyToOne
+	@JoinColumn(name = "GAME_ID")
+	private Game favGame;
+
 	public GameUser() {
 		super();
 	}
@@ -40,6 +43,18 @@ public class GameUser {
 		this.email = email;
 		this.password = password;
 		this.role = role;
+	}
+
+	
+	public GameUser(int id, String username, String email, String password, String role, String genre, Game favGame) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.genre = genre;
+		this.favGame = favGame;
 	}
 
 	public int getId() {
@@ -82,22 +97,26 @@ public class GameUser {
 		this.role = role;
 	}
 
-	/*
-	 public List<Game> getGameList() {
-	
-		return gameList;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setGameList(List<Game> gameList) {
-		this.gameList = gameList;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
- */
+
+	public Game getFavGame() {
+		return favGame;
+	}
+
+	public void setFavGame(Game favGame) {
+		this.favGame = favGame;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password="
-				+ password + ", role=" + role + "]";
+		return "GameUser [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", role=" + role + ", genre=" + genre + ", favGame=" + favGame + "]";
 	}
-	
-	
 
 }

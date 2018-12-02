@@ -67,5 +67,17 @@ public class UserDAOImpl implements UserDAO{
 		tx.commit();
 		s.close();
 	}
+	
+	  @Override
+	   public GameUser login(String email, String password) {
+	       // TODO Auto-generated method stub
+	       Session s = HibernateUtil.getSession();
+	       String sql = "Select * from GAMEUSER" + " where EMAIL = ? AND PASSWORD = ?";
+	       Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
+	       q.setParameter(1, email);
+	       q.setParameter(2, password);
+	       return q.uniqueResult();
+
+	   }
 
 }

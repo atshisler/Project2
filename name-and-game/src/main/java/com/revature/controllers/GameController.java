@@ -31,6 +31,8 @@ public class GameController {
 	private IgdbRequest ib = new IgdbRequest();
 	private GenreDAO gnD = new GenreDAOImpl();
 	private PlatformDAO pD = new PlatformDAOImpl();
+	//--------------------------Variables---------------------------------------//
+	
 	
 	@GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
