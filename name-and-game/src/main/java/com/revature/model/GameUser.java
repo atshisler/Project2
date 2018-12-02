@@ -26,7 +26,9 @@ public class GameUser {
 	@Column(name = "ROLE")
 	private String role;
 	
-	//List<Game> gameList = new ArrayList<Game>();
+	@ManyToOne
+	@JoinColumn(name="GAME_ID")
+	List<Game> gameList = new ArrayList<>();
 	
 	public GameUser() {
 		super();
