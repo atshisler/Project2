@@ -64,6 +64,19 @@ public class GameController {
 			throw new RuntimeException("Error Parsing Data");
 		}
 	}
+	
+	@GetMapping(value = "allGames", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getAllGames() {
+		List<Game> games =  gd.getAllGames();
+		try {
+			return new ObjectMapper().writeValueAsString(games);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException("Error Parsing Data");
+		}
+	}
+	
+	//----------------------------Search Name------------------------------------------//
 
 	@GetMapping(value = "searchGenre/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -88,6 +101,7 @@ public class GameController {
 		}
 	}
 	
+	//-----------------------------Genres--------------------------------------------//
 	@GetMapping(value = "platforms", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getPlatforms() {
@@ -110,7 +124,8 @@ public class GameController {
 		}
 		
 	}
-
+	//-----------------------------Platforms-------------------------------------//
+	
 	@GetMapping(value = "dev/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getGamesByCompany(@PathVariable("name") String name) {
@@ -125,5 +140,7 @@ public class GameController {
 			throw new RuntimeException("Error Parsing Data");
 		}
 	}
+	
+	//----------------------------Companies-------------------------------------//
 
 }

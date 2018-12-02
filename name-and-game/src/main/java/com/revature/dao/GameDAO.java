@@ -11,5 +11,6 @@ List<Game>getGamesByPlatform(String platform);
 List<Game>getGameByGenre(String genre);
 int addGame(Game game);
 List<Game> searchGameByName(String name);
+List<Game> getAllGames();
 
 }
