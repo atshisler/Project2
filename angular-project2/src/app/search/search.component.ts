@@ -10,8 +10,10 @@ import { map } from 'rxjs/operators'
 })
 export class SearchComponent implements OnInit {
 
-  private _url: string ='http://localhost:8080/name-and-game/game/search/Isaac';
+  private _url: string ='http://ec2-3-16-11-92.us-east-2.compute.amazonaws.com:8080/name-and-game/game/search/';
   games;
+
+  searchCo : string;
   
   
     // search: string = '';
@@ -27,10 +29,23 @@ export class SearchComponent implements OnInit {
   constructor(private _searchService: SearchService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(this._url).subscribe(data =>
+  }
+  
+  getSearchService()
+  {
+    this._searchService.search = this.searchCo;
+    console.log(this._searchService);
+    this.retriveSearch();
+    return this._searchService;
+  }
+
+  retriveSearch()
+  {
+    this.http.get(this._url + this.searchCo).subscribe(data =>
       {
+        console.log("hit");
         JSON.stringify(this.games);
-       this.games = data;
+        this.games = data;
         console.log(data);
      })
   }

@@ -2,8 +2,8 @@
 <br>
 <div class="container col-lg-4">
     <form class="form-inline md-form mr-auto mb-4">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="button" id="search" [(ngModel)] = "getGames()">Search</button>
+        <input class="form-control mr-sm-2" [(ngModel)]="searchCo" name="searchCo" type="text" id="search" placeholder="Search" aria-label="Search">
+        <button class="button" (click)="getSearchService().getGames()">Search</button>
 
         <!--
         <input class="form-control mr-sm-2" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">

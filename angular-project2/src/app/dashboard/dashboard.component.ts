@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  private _url: string ='http://localhost:8080/name-and-game/game/search/zelda';
+  private _url: string ='http://ec2-3-16-11-92.us-east-2.compute.amazonaws.com:8080/name-and-game/game/search/zelda';
   games;
 
   constructor(private _searchService: SearchService, private http: HttpClient) { }
