@@ -11,6 +11,7 @@ import com.revature.dao.PlatformDAOImpl;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOImpl;
 import com.revature.igdb.IgdbRequest;
+import com.revature.model.Game;
 import com.revature.model.GameUser;
 
 public class Driver {
@@ -21,16 +22,14 @@ public class Driver {
 		IgdbRequest igd = new IgdbRequest();
 		PlatformDAO pDAO = new PlatformDAOImpl();
 		GenreDAO gnDAO = new GenreDAOImpl();
-		GameUser user = ud.getUser("GMan");
-		 System.out.println("Test: " + user);
-		 System.out.println(user.getEmail());
+		
+		GameUser user1 = new GameUser("Drago", "got@gmail.com", "winteriscoming", "user");
+		Game myGame = gd.getGameByName("Dragon Age: Origins");
+		user1.setFavGame(myGame);
+		user1.setGenre("Shooter");
+		ud.createUser(user1);
 		 
-		 System.out.println();
-		// igd.getGameByTitle("Zelda");
-		// System.out.println(gd.getGameByName("Zelda no Densetsu: The Hyrule
-		// Fantasy"));
-		// igd.getGameByTitle("Halo");
-		// igd.getGameByTitle("Zelda");
+		System.out.println(ud.getUser("Drago"));
 		// System.out.println(gd.getGameByGenre());
 		// System.out.println(gd.getGameByGenre("Shooter"));
 		// System.out.println(gd.searchGameByName("zelda"));

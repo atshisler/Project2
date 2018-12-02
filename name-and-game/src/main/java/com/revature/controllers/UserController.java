@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,15 @@ import com.revature.model.GameUser;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-private UserDAO ud = new UserDAOImpl();
 
+	private UserDAO ud = new UserDAOImpl();
 
-@PostMapping("/login")
-@ResponseBody
-public GameUser login(@RequestParam("email") String user, @RequestParam("password")String pass) {
-    return ud.login(user, pass);
-}
+//-----------------------------Variables--------------------------------------//
+
+	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public GameUser login(@RequestParam("email") String user, @RequestParam("password") String pass) {
+		return ud.login(user, pass);
+	}
 
 }
