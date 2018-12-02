@@ -41,7 +41,8 @@ public class UserDAOImpl implements UserDAO{
 	public List<GameUser> getAllUsers() {
 
 		Session s = HibernateUtil.getSession();
-		List<GameUser> users = s.createQuery("from Cave", GameUser.class).list();
+		String sql = "SELECT * FROM GAMEUSER";
+		List<GameUser> users = s.createQuery(sql, GameUser.class).list();
 		s.close();
 		return users;
 	}
