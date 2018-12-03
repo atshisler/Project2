@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO{
 		String sql = "SELECT * FROM GAMEUSER";
 		Session s = HibernateUtil.getSession();
 		Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
-		List<GameUser> users = s.createQuery(sql, GameUser.class).list();
+		List<GameUser> users = q.list();
 		s.close();
 		return users;
 	}
