@@ -19,6 +19,8 @@ import com.revature.dao.UserDAOImpl;
 import com.revature.model.Game;
 import com.revature.model.GameUser;
 
+import net.bytebuddy.implementation.bytecode.assign.primitive.PrimitiveUnboxingDelegate.UnboxingResponsible;
+
 @CrossOrigin
 @Controller
 @RequestMapping("/user")
@@ -55,8 +57,7 @@ public class UserController {
 	@ResponseBody
 	public List<GameUser> getAllUsers(@RequestParam("role") String role) {
 		if(role.equals("admin")) {
-			return ud.getAllUsers();
-			
+			return ud.getAllUsers();	
 		}
 		else {
 			return null;
@@ -74,6 +75,17 @@ public class UserController {
 	public void unblockUser(@RequestParam("username") String username) {
 		GameUser user = ud.getUser(username);
 		user.setRole("user");
+		ud.updateUser(user);
+	}
+	@PostMapping(value = "/updateUser", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public void updateUser(@RequestParam("username") String username, @RequestParam("password") String password,
+			@RequestParam("favGame") String favGame, @RequestParam("favGenre") String favgenre) {
+		GameUser user = ud.getUser(username);
+		user.setPassword(password);
+		Game game = gd.getGameByName(favGame);
+		user.setFavGame(game);
+		user.setGenre(favgenre);
 		ud.updateUser(user);
 	}
 }

@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO{
 		return userPk;
 	}
 	public void updateUser(GameUser user) {
-
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		s.update(user);
