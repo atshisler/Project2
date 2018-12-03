@@ -43,7 +43,6 @@ export class SearchComponent implements OnInit {
   {
     this.http.get(this._url + this.searchCo).subscribe(data =>
       {
-        console.log("hit");
         JSON.stringify(this.games);
         this.games = data;
         console.log(data);
