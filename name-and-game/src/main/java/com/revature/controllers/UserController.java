@@ -64,11 +64,16 @@ public class UserController {
 	}
 	@PostMapping(value = "/block", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void updateUser(@RequestParam("username") String username) {
+	public void blockUser(@RequestParam("username") String username) {
 		GameUser user = ud.getUser(username);
 		user.setRole("block");
 		ud.updateUser(user);
 	}
-	
-	
+	@PostMapping(value = "/unblock", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public void unblockUser(@RequestParam("username") String username) {
+		GameUser user = ud.getUser(username);
+		user.setRole("user");
+		ud.updateUser(user);
+	}
 }
