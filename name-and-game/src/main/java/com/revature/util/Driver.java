@@ -22,19 +22,22 @@ public class Driver {
 		IgdbRequest igd = new IgdbRequest();
 		PlatformDAO pDAO = new PlatformDAOImpl();
 		GenreDAO gnDAO = new GenreDAOImpl();
-		
+
 		GameUser user1 = new GameUser("Drago", "got@gmail.com", "winteriscoming", "user");
 		Game myGame = gd.getGameByName("Dragon Age: Origins");
 		user1.setFavGame(myGame);
 		user1.setGenre("Shooter");
-		ud.createUser(user1);
-		 
+		// ud.createUser(user1);
+		//igd.populatePlatform();
 		System.out.println(ud.getUser("Drago"));
+
+		// igd.populateGenres();
+
 		// System.out.println(gd.getGameByGenre());
 		// System.out.println(gd.getGameByGenre("Shooter"));
 		// System.out.println(gd.searchGameByName("zelda"));
 		// igd.getGameByTitle("Dark Souls");
-		//System.out.println(gnDAO.getAllGenres());
+		// System.out.println(gnDAO.getAllGenres());
 		// System.out.println(pDAO.getGameByPlatform("Playstation 4"));
 	}
 

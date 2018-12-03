@@ -19,6 +19,7 @@ public class UserController {
 
 //-----------------------------Variables--------------------------------------//
 
+	
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public GameUser login(@RequestParam("email") String user, @RequestParam("password") String pass) {

@@ -68,18 +68,62 @@ public class IgdbRequest {
 		return null;
 	}
 
-	public List<Game> getGamesByPlatform(String platform) {
-		return null;
+	public void populateCompany() {
+		Parameters param = new Parameters().addFields("*").addLimit("50");
+		wrapper.companies(param, new OnSuccessCallback() {
+			public void onSuccess(JSONArray result) {
+				for (int i = 0; i < result.length(); i++) {
+					Platform newP = new Platform(result.getJSONObject(i).getString("name"));
+					System.out.println(result.getJSONObject(i).getString("name"));
+					if (!pDAO.platformExists(newP)) {
+						pDAO.addPlatform(newP);
+					} // add platforms
+				} // all platforms
+			}
+
+			public void onError(Exception error) {
+				System.out.println("Error");// Do something on error
+			}
+		});
+	}
+
+	public void populatePlatform() {
+		Parameters param = new Parameters().addFields("*").addLimit("50");
+		wrapper.platforms(param, new OnSuccessCallback() {
+			public void onSuccess(JSONArray result) {
+				for (int i = 0; i < result.length(); i++) {
+					Platform newP = new Platform(result.getJSONObject(i).getString("name"));
+					System.out.println(result.getJSONObject(i).getString("name"));
+					if (!pDAO.platformExists(newP)) {
+						pDAO.addPlatform(newP);
+					} // add platforms
+				} // all platforms
+			}
+
+			public void onError(Exception error) {
+				System.out.println("Error");// Do something on error
+			}
+		});
 
 	}
 
-	public List<Game> getGamesByYear(int year) {
-		return null;
+	public void populateGenres() {
+		Parameters param = new Parameters().addFields("*").addLimit("50");
+		wrapper.genres(param, new OnSuccessCallback() {
+			public void onSuccess(JSONArray result) {
+				for (int i = 0; i < result.length(); i++) {
+					Genre newGN = new Genre(result.getJSONObject(i).getString("name"));
+					System.out.println(result.getJSONObject(i).getString("name"));
+					if (!gnDAO.genreExists(newGN)) {
+						gnDAO.addGenre(newGN);
+					} // add genres
+				} // all genres
+			}
 
-	}
-
-	public List<Game> getGameByGenre(String genre) {
-		return null;
+			public void onError(Exception error) {
+				System.out.println("Error");// Do something on error
+			}
+		});
 
 	}
 
