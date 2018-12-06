@@ -18,7 +18,7 @@ export class LoginServiceService {
   {
     this.httpHeader = {headers: new HttpHeaders({'email':this.email, 'password': this.pass})};
     console.log(this.httpHeader.headers.keys());
-    return this.http.post(this._login, this.email, this.httpHeader);
+    return this.http.post(this._login + '?email=' + this.email + '&password=' + this.pass, this.email, this.httpHeader);
   }
 
 }

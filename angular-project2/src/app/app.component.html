@@ -34,6 +34,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>{{ title }}</h1>
+  <h2>Welcome {{user.username}}</h2>
   <img width="300" alt="Angular Logo" src="../assets/gamesymbol.png" style="width:150px;">
 </div>
 <hr />
@@ -60,7 +61,7 @@
           <br>
           <div>
             <br>
-            <button id="submitBtn" type="submit" (click)="attemptLogin()" value="Submit" class="btn btn-success justify-content-center"> Submit</button>
+            <button id="submitBtn" type="submit" (click)="attemptLogin()" value="Submit" class="btn btn-success justify-content-center" href="/home"> Submit</button>
             <p> Don't have an account? Click <a href="/signup"> here</a></p>
           </div>
         </form>
@@ -82,13 +83,13 @@
                   <div class="image-container">
                     <img src="../assets/gamesymbol.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                     <br>
-                    <div class="container" style="align-content: center">
+                    <div class="container" style="align-content: center" >
                       <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
                       <input type="file" style="display: none;" id="profilePicture" name="file" />
                     </div>
                   </div>
                   <div class="userData ml-3">
-                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">GameBoy</h2>
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{user.username}}</h2>
                   </div>
                   <div class="ml-auto">
                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -99,57 +100,25 @@
               <div class="row">
                 <div class="col-12">
 
-                  <div class="tab-content ml-1" id="myTabContent">
+                  <div class="tab-content ml-1" id="myTabContent" >
                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
 
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
-                          <label style="font-weight:bold;">First name</label>
-                        </div>
-                        <div class="col-md-8 col-6">
-                          <form>
-                            <input type="text" placeholder="Enter your name">
-                          </form>
-                        </div>
-                      </div>
-                      <hr />
-
-                      <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
-                          <label style="font-weight:bold;">Birth Date</label>
-                        </div>
-                        <div class="col-md-8 col-6">
-                          March 22, 1994.
-                        </div>
-                      </div>
-                      <hr />
-
-
-                      <div class="row">
+                      <div class="row" id="genre">
                         <div class="col-sm-3 col-md-2 col-5">
                           <label style="font-weight:bold;">Favorite Genre</label>
                         </div>
-                            <div class="dropdown col-md-8 col-6">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Genres
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Horror</a>
-                                  <a class="dropdown-item" href="#">RPG</a>
-                                </div>
-                              </div>
+                            <div class="dropdown col-md-8 col-6" >
+                              <p class="card-text">{{user.genre}}</p>   
+                            </div>
                       </div>
                       <hr />
-                      <div class="row">
+                      <div class="row" id="game">
                         <div class="col-sm-3 col-md-2 col-5">
-                          <label style="font-weight:bold;">Favrote Game:</label>
+                          <label style="font-weight:bold;">Favorite Game:</label>
                         </div>
                         <div class="col-md-8 col-6">
-                          <form>
-                            <input type="text" placeholder="Enter favorite game...">
-                          </form>
+                          <p class="card-text">{{user.favGame.title}}</p>
                         </div>
                       </div>
                       <hr />
