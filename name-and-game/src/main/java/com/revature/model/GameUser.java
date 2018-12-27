@@ -56,6 +56,15 @@ public class GameUser {
 		this.genre = genre;
 		this.favGame = favGame;
 	}
+	public GameUser(String username, String email, String pass, String role, String favoritegenre, Game favGame) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = pass;
+		this.role = "user";
+		this.genre  = favoritegenre;
+		this.favGame = favGame;
+	}
 
 	public int getId() {
 		return id;

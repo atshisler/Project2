@@ -21,7 +21,6 @@ public class UserDAOImpl implements UserDAO{
 		return userPk;
 	}
 	public void updateUser(GameUser user) {
-
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		s.update(user);
@@ -39,10 +38,10 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	public List<GameUser> getAllUsers() {
-
-		Session s = HibernateUtil.getSession();
 		String sql = "SELECT * FROM GAMEUSER";
-		List<GameUser> users = s.createQuery(sql, GameUser.class).list();
+		Session s = HibernateUtil.getSession();
+		Query<GameUser> q = s.createNativeQuery(sql, GameUser.class);
+		List<GameUser> users = q.list();
 		s.close();
 		return users;
 	}
