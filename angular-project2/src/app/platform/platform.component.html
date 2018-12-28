@@ -1,17 +1,22 @@
 <div>
-<ul class="nav justify-content-center">
+ <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Playstation</a>
+      <a class="nav-link" id="playstation-tab" data-toggle="tab" href="#playstation" role="tab" aria-controls="playstation" aria-selected="false">Playstation</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">XBox</a>
+      <a class="nav-link" id="xbox-tab" data-toggle="tab" href="#xbox" role="tab" aria-controls="xbox" aria-selected="false">XBox</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Nintendo</a>
+      <a class="nav-link" id="nintendo-tab" data-toggle="tab" href="#nintendo" role="tab" aria-controls="contact" aria-selected="false">Nintendo</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">PC</a>
+      <a class="nav-link" id="pc-tab" data-toggle="tab" href="#pc" role="tab" aria-controls="pc" aria-selected="false">PC</a>
     </li>
   </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="playstation" role="tabpanel" aria-labelledby="playstation-tab">List of games on playstation</div>
+    <div class="tab-pane fade" id="xbox" role="tabpanel" aria-labelledby="xbox-tab">List of games on XBox</div>
+    <div class="tab-pane fade" id="nintendo" role="tabpanel" aria-labelledby="nintendo-tab">List of games on nintendo</div>
+    <div class="tab pane fade" id="pc" role="tabpanel" aria-labelledby="pc-tab">List of games on PC</div>
+  </div>
 </div>
-

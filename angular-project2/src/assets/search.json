@@ -1,0 +1,13 @@
+[{
+    "id": 2,
+    "name": "Bloodborne",
+    "slug": "/games/bloodborne",
+    "url": "https://www.igdb.com/games/bloodborne",
+    "trailer": "https://www.youtube.com/embed/G203e1HhixY",
+    "created_at": 123456789,
+    "updated_at": 123456789,
+    "summary": "Introducing Bloodborne, the latest Action RPG from renowned Japanese developer FromSoftware, makers of the hit Dark Souls series, coming exclusively to PlayStation 4.",
+    "extrasummary":" Face your fears as you search for answers in the ancient city of Yharnam, now cursed with a strange endemic illness spreading through the streets like wildfire. Danger, death and madness lurk around every corner of this dark and horrific world, and you must discover its darkest secrets in order to survive.",
+    "genre": "Adventure, Role-Playing (RPG)",
+    "platform": "Playstation 4"
+}]

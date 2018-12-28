@@ -1,0 +1,35 @@
+
+<br>
+<div class="container col-lg-4">
+    <form class="form-inline md-form mr-auto mb-4">
+        <input class="form-control mr-sm-2" [(ngModel)]="searchCo" name="searchCo" type="text" id="search" placeholder="Search" aria-label="Search">
+        <button class="button" (click)="getSearchService().getGames()">Search</button>
+
+        <!--
+        <input class="form-control mr-sm-2" [(ngModel)]="search" type="text" placeholder="Search" aria-label="Search">
+        <button class="button" (click)='searchGame()'>Search</button>
+        -->
+      </form>
+</div>
+
+<!-- <h2>{{games.title}}</h2> -->
+
+<!-- <div id ="player" class="container"><iframe id="existing-iframe-example"
+  width="640" height="360"
+  src = "https://www.youtube.com/embed/G203e1HhixY"
+  frameborder="0"
+  style="border: solid 4px green"
+></iframe></div> -->
+<br/>
+<br>
+<div class="container">
+  <div class="card-deck" *ngFor="let game of games">
+    <div class="card">
+      <div class="card-body" >
+        <h5 class="card-title"><i class="fas fa-gamepad"></i> {{game.title}}</h5>
+        <p class="card-text">{{game.platforms[0].name}}</p>
+        <p class="card-text">{{game.genres[0].name}}</p>
+      </div>
+    </div>
+</div>
+

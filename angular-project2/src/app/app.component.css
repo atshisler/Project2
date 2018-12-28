@@ -1,20 +1,9 @@
-div
-{
-    background-color: #1c1c1c;
-}
-
 h1
 {
     color: #009933;
 }
 
-nav
+nav:hover
 {
-    background-color: #3f3e3e;
-    font-size: 25px
-}
-
-a
-{
-    color: #00994d;
+    color: green;
 }

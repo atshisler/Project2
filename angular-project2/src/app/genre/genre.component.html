@@ -1,6 +1,27 @@
-<div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">With textarea</span>
-    </div>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
+<div class="container col-4">
+  <h2>Genre</h2>
+  <h6>Select your Genre</h6>
+</div>
+
+<div>
+  <ul class="nav nav-tabs justify-content-center" id="genreTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" id="action-tab" data-toggle="tab" href="#action" role="tab" aria-controls="action"
+      aria-selected="false">Action</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="actionad-tab" data-toggle="tab" href="#actionad" role="tab" aria-controls="nav-profile"
+      aria-selected="false">Action Adventure</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="rpg-tab" data-toggle="tab" href="#rpg" role="tab" aria-controls="rpg"
+      aria-selected="false">Role-Playing</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabContent">
+    <div class="tab-pane fade" id="action" role="tabpanel" aria-labelledby="action-tab">List of
+      Action games</div>
+    <!-- <div class="tab-pane fade" id="actionad" role="tabpanel" aria-labelledby="actionad-tab">{{game.genre}}</div> -->
+    <div class="tab-pane fade" id="rpg" role="tabpanel" aria-labelledby="rpg-tab">List of Roleplaying Games</div>
   </div>
+</div>

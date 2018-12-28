@@ -7,3 +7,8 @@ a
 {
     color: #009933;
 }
+
+a:hover
+{
+    color: dodgerblue;
+}
